@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build a Student Expense Tracker in Google Sheets in 20 Minutes | Money Moves India</title>
+<meta name="description" content="A free, step-by-step expense tracker with a dropdown for categories and a summary sheet that adds everything up for you.">
+<link rel="canonical" href="https://moneymaker-cmpq.onrender.com/student-expense-tracker-google-sheets.html">
+<style>
+:root{--ink:#1b2a41;--muted:#5b6b7f;--bg:#fbfaf7;--card:#fff;--line:#e6e2d9;--brand:#0f5f55;--accent:#d97706}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;background:#fff;padding:8px;z-index:9}
+.top{background:#fff;border-bottom:1px solid var(--line)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;padding-bottom:14px}
+.logo{font:700 20px Georgia,serif;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.mark{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--brand);color:#fff;font-size:18px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+nav a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--accent)}
+main{padding-top:30px;padding-bottom:50px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.25;color:var(--ink)}
+h1{font-size:clamp(28px,5vw,42px);margin:.3em 0 .4em}
+h2{font-size:25px;margin:1.6em 0 .5em}h3{font-size:19px;margin:.4em 0}
+.sec{margin-top:2em}
+.lead{font-size:19px;color:var(--muted);max-width:720px}
+.hero{padding:34px 0 10px}
+.btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:600;padding:11px 20px;border-radius:9px;margin:4px 8px 4px 0}
+.btn.alt{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;text-decoration:none;color:var(--ink);transition:box-shadow .15s}
+.card:hover{box-shadow:0 6px 18px rgba(27,42,65,.09)}
+.card p{color:var(--muted);font-size:15px;margin:.4em 0 .8em;line-height:1.55}
+.more{color:var(--brand);font-weight:600;font-size:14px}
+.tag{display:inline-block;background:#e8f1ef;color:var(--brand);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:99px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.tile{display:block;background:#fff;border-left:5px solid var(--accent);border-radius:8px;padding:16px 18px;text-decoration:none;color:var(--ink);border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tile p{margin:.2em 0 0;font-size:15px;color:var(--muted);line-height:1.5}
+.post{max-width:740px;margin:0 auto}
+.post p,.post li{font-size:18px}.post li{margin:.3em 0}
+.meta{color:var(--muted);font-size:14px;margin-top:-.2em}
+.crumb{font-size:14px;color:var(--muted);max-width:740px;margin:0 auto 14px}.crumb a{color:var(--brand)}
+a{color:var(--brand)}
+.tw{overflow-x:auto;margin:1.2em 0}
+table{border-collapse:collapse;width:100%;font-size:15.5px;background:#fff;margin:1.2em 0}.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.5}
+th{background:#f1eee6}
+figure{margin:1.6em 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}
+.diagram{width:100%;height:auto;display:block}
+figcaption{font-size:14px;color:var(--muted);text-align:center;margin-top:6px}
+code{background:#f1eee6;padding:2px 6px;border-radius:5px;font-size:15px;word-break:break-word}
+.box,.note{background:#fff;border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:8px;padding:6px 20px;margin:2em 0}
+.box h2{font-size:20px;margin:.7em 0 .3em}
+.note{border-left-color:var(--accent);font-size:15px;padding:12px 20px}
+.box.wide{max-width:none}
+.related{max-width:1040px;margin:3em auto 0}
+.hd{padding-bottom:10px}
+.foot{background:#14213a;color:#cfd7e4;padding:30px 0;margin-top:30px}
+.foot a{color:#fff;text-decoration:none;margin-right:18px;font-size:15px;display:inline-block;padding:3px 0}
+.foot a:hover{text-decoration:underline}
+.small{font-size:13.5px;color:#a9b4c6;margin:.8em 0 0;line-height:1.55}
+@media(max-width:600px){body{font-size:16px}.post p,.post li{font-size:17px}h2{font-size:22px}}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5748993499550288" crossorigin="anonymous"></script>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap bar">
+<a class="logo" href="index.html"><span class="mark">M</span> Money Moves India</a>
+<nav aria-label="Main"><a href="index.html">Home</a><a href="trading-basics.html">Trading Basics</a><a href="side-income.html">Side Income</a><a href="money-mistakes.html">Money Mistakes</a><a href="tools-reviews.html">Tools &amp; Guides</a><a href="about.html">About</a></nav>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="tools-reviews.html">Tools & Guides</a></nav>
+<article class="post">
+<span class="tag">Tools & Guides</span>
+<h1>Build a Student Expense Tracker in Google Sheets in 20 Minutes</h1>
+<p class="meta">By the Money Moves India editorial team &middot; Published 1 October 2026 &middot; 4 min read</p>
+
+<p>You do not need a paid app to know where your pocket money or salary goes. A Google Sheet with two tabs is enough. This guide builds one, step by step. You will need a free Google account.</p>
+<h2>Step 1: Create the log sheet</h2>
+<ol>
+<li>Open sheets.google.com and click <strong>Blank spreadsheet</strong>.</li>
+<li>Click the title at the top-left, type <strong>My Money Tracker</strong> and press Enter.</li>
+<li>Right-click the tab named "Sheet1" at the bottom, choose <strong>Rename</strong> and type <strong>Log</strong>.</li>
+<li>In row 1, type these headings: A1 <strong>Date</strong>, B1 <strong>What I bought</strong>, C1 <strong>Category</strong>, D1 <strong>Amount</strong>, E1 <strong>Paid by</strong>.</li>
+</ol>
+<h2>Step 2: Add a dropdown for Category</h2>
+<ol>
+<li>Click the letter <strong>C</strong> at the top of column C to select the whole column.</li>
+<li>Click <strong>Data</strong> in the menu, then <strong>Data validation</strong>, then <strong>Add rule</strong>.</li>
+<li>Under Criteria choose <strong>Dropdown</strong>. Add four options: <strong>Fixed</strong>, <strong>Needs</strong>, <strong>Wants</strong>, <strong>Savings</strong>.</li>
+<li>Click <strong>Done</strong>.</li>
+</ol>
+<p>What each category means:</p>
+<div class='tw'><table><thead><tr><th>Category</th><th>Put these here</th><th>Example</th></tr></thead><tbody><tr><td>Fixed</td><td>Bills that repeat every month</td><td>Phone plan, hostel rent, subscriptions</td></tr><tr><td>Needs</td><td>Things you must buy, but amounts change</td><td>Groceries, bus pass, books</td></tr><tr><td>Wants</td><td>Nice to have, not required</td><td>Snacks, games, new clothes</td></tr><tr><td>Savings</td><td>Money you set aside</td><td>Recurring deposit, emergency fund</td></tr></tbody></table></div>
+<h2>Step 3: Enter a few sample rows</h2>
+<div class='tw'><table><thead><tr><th>Date</th><th>What I bought</th><th>Category</th><th>Amount</th><th>Paid by</th></tr></thead><tbody><tr><td>2 Oct</td><td>Phone recharge</td><td>Fixed</td><td>299</td><td>UPI</td></tr><tr><td>3 Oct</td><td>Notebook and pens</td><td>Needs</td><td>180</td><td>Cash</td></tr><tr><td>5 Oct</td><td>Pizza with friends</td><td>Wants</td><td>250</td><td>UPI</td></tr><tr><td>7 Oct</td><td>Put into savings</td><td>Savings</td><td>500</td><td>UPI</td></tr></tbody></table></div>
+<h2>Step 4: Make the summary tab</h2>
+<ol>
+<li>Click the <strong>+</strong> at the bottom-left to add a new tab. Rename it <strong>Summary</strong>.</li>
+<li>In A1 type <strong>Category</strong> and in B1 type <strong>Total spent</strong>.</li>
+<li>In A2 to A5 type: Fixed, Needs, Wants, Savings.</li>
+<li>Click B2 and type this formula, then press Enter: <code>=SUMIF(Log!C:C, A2, Log!D:D)</code></li>
+<li>Click B2 again, copy it (Ctrl+C), select B3 to B5 and paste (Ctrl+V).</li>
+<li>In A7 type <strong>Money received this month</strong> and type your amount in B7.</li>
+<li>In A8 type <strong>Money left</strong>. In B8 type: <code>=B7-SUM(B2:B5)</code></li>
+</ol>
+<p>With the sample rows above, the Summary tab shows Fixed 299, Needs 180, Wants 250 and Savings 500. If you received Rs 3,000 this month, "Money left" shows 1,771. Savings is counted as money set aside, so it reduces what is left to spend, which is what most students want.</p>
+<h2>Step 5: Build the habit</h2>
+<ul>
+<li>Add each expense the same day. Doing it later means you forget small items.</li>
+<li>Pick one fixed time each week, for example Sunday evening, and spend ten minutes looking at the Summary tab.</li>
+<li>If "Wants" is the largest number, decide on a weekly limit and write it in a cell beside it.</li>
+<li>At month end, make a copy of the file (File, then Make a copy) so every month stays separate.</li>
+</ul>
+<h2>Keep it small</h2>
+<p>A tracker you keep updating beats a perfect one you abandon in week two. Resist adding more columns until the basic version feels natural. Three numbers matter most at the start: what came in, what went out, and what is left.</p>
+
+<h2>Reading your summary</h2>
+<p>After a few weeks, the Summary tab tells a story. Here is how to read it without judging yourself.</p>
+<ul>
+<li>If <strong>Fixed</strong> is large, your money is committed before the month starts. Look for a subscription you forgot about.</li>
+<li>If <strong>Needs</strong> swings a lot from week to week, plan a weekly amount and keep a small buffer.</li>
+<li>If <strong>Wants</strong> is the biggest number, you do not need to remove it. Set a limit you can live with.</li>
+<li>If <strong>Savings</strong> is zero, start with a small, regular amount. Rs 200 every week beats Rs 2,000 once.</li>
+</ul>
+<p>Some people use a rough rule, such as spending half on needs, thirty percent on wants and saving the rest. Treat any rule like that as a starting point. Your own numbers are more useful than someone else's ratio.</p>
+<h2>Fixing common problems</h2>
+<div class='tw'><table><thead><tr><th>Problem</th><th>Likely cause</th><th>Fix</th></tr></thead><tbody><tr><td>The total shows 0</td><td>Category spelling in the Summary tab does not match the dropdown, or the amount was typed as text</td><td>Make sure A2 to A5 spell the categories exactly as in the dropdown, and type amounts as plain numbers with no Rs sign</td></tr><tr><td>Dropdown does not appear</td><td>The rule was added to a different column</td><td>Select column C again and repeat Data, Data validation, Add rule</td></tr><tr><td>Formula shows an error</td><td>The tab is not named exactly Log</td><td>Rename the tab to Log or edit the formula to match the tab name</td></tr><tr><td>Numbers include old months</td><td>The Log has several months of data</td><td>Start a new copy of the file each month, or add a month filter later once you are comfortable</td></tr></tbody></table></div>
+<h2>Next steps once the basics work</h2>
+<p>When you have used the tracker for a month, try one upgrade at a time: a column for the month, a pie chart on the Summary tab (select the data, then Insert, then Chart), or a rule that turns the "Money left" cell red if it falls below a number you choose. Add a feature only when you feel a real need for it.</p>
+
+<aside class="box"><h2>Where to verify this</h2><p>Rules, fees and menus change. Check the latest version at:</p><ul><li>Google&#x27;s Sheets help pages if a menu name has changed since this was written.</li></ul></aside>
+<aside class="note"><strong>Educational information only.</strong> This article explains how things work in general. It is not personal financial, investment, tax or legal advice. Read our <a href="disclaimer.html">full disclaimer</a> and <a href="editorial-policy.html">editorial policy</a>.</aside>
+</article>
+<section class="related"><h2>Keep reading</h2><div class="grid"><a class="card" href="read-candlestick-charts.html"><span class="tag">Tools & Guides</span><h3>How to Read a Candlestick Chart: A Beginner Guide for TradingView</h3><p>What every part of a candle means, how timeframes change the picture, and three practice exercises you can do on any free charting site.</p><span class="more">Read the guide &rarr;</span></a><a class="card" href="leverage-pips-lots-explained.html"><span class="tag">Trading Basics</span><h3>Leverage in Trading: What a 1% Move Does to a Rs 20,000 Account</h3><p>Pips, lots, margin and leverage explained with one worked example that shows how position size changes the risk.</p><span class="more">Read the guide &rarr;</span></a><a class="card" href="is-trading-legal-in-india.html"><span class="tag">Trading Basics</span><h3>Is Trading Legal in India? A Checklist to Run Before You Deposit Money</h3><p>&#x27;Trading&#x27; covers many different activities. Use this six-step checklist to check a product and a platform before you send any money.</p><span class="more">Read the guide &rarr;</span></a></div></section>
+</main>
+<footer class="foot"><div class="wrap">
+<div class="fl"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="editorial-policy.html">Editorial Policy</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="disclaimer.html">Disclaimer</a><a href="articles.html">All Articles</a></div>
+<p class="small">Money Moves India is an independent educational website. Nothing here is personal financial, investment, tax or legal advice. Trading and investing involve risk, and no income is guaranteed.</p>
+<p class="small">&copy; 2026 Money Moves India. All rights reserved.</p>
+</div></footer>
+</body>
+</html>

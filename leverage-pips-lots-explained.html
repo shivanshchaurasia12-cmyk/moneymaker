@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leverage in Trading: What a 1% Move Does to a Rs 20,000 Account | Money Moves India</title>
+<meta name="description" content="Pips, lots, margin and leverage explained with one worked example that shows how position size changes the risk.">
+<link rel="canonical" href="https://moneymaker-cmpq.onrender.com/leverage-pips-lots-explained.html">
+<style>
+:root{--ink:#1b2a41;--muted:#5b6b7f;--bg:#fbfaf7;--card:#fff;--line:#e6e2d9;--brand:#0f5f55;--accent:#d97706}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;background:#fff;padding:8px;z-index:9}
+.top{background:#fff;border-bottom:1px solid var(--line)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;padding-bottom:14px}
+.logo{font:700 20px Georgia,serif;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.mark{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--brand);color:#fff;font-size:18px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+nav a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--accent)}
+main{padding-top:30px;padding-bottom:50px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.25;color:var(--ink)}
+h1{font-size:clamp(28px,5vw,42px);margin:.3em 0 .4em}
+h2{font-size:25px;margin:1.6em 0 .5em}h3{font-size:19px;margin:.4em 0}
+.sec{margin-top:2em}
+.lead{font-size:19px;color:var(--muted);max-width:720px}
+.hero{padding:34px 0 10px}
+.btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:600;padding:11px 20px;border-radius:9px;margin:4px 8px 4px 0}
+.btn.alt{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;text-decoration:none;color:var(--ink);transition:box-shadow .15s}
+.card:hover{box-shadow:0 6px 18px rgba(27,42,65,.09)}
+.card p{color:var(--muted);font-size:15px;margin:.4em 0 .8em;line-height:1.55}
+.more{color:var(--brand);font-weight:600;font-size:14px}
+.tag{display:inline-block;background:#e8f1ef;color:var(--brand);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:99px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.tile{display:block;background:#fff;border-left:5px solid var(--accent);border-radius:8px;padding:16px 18px;text-decoration:none;color:var(--ink);border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tile p{margin:.2em 0 0;font-size:15px;color:var(--muted);line-height:1.5}
+.post{max-width:740px;margin:0 auto}
+.post p,.post li{font-size:18px}.post li{margin:.3em 0}
+.meta{color:var(--muted);font-size:14px;margin-top:-.2em}
+.crumb{font-size:14px;color:var(--muted);max-width:740px;margin:0 auto 14px}.crumb a{color:var(--brand)}
+a{color:var(--brand)}
+.tw{overflow-x:auto;margin:1.2em 0}
+table{border-collapse:collapse;width:100%;font-size:15.5px;background:#fff;margin:1.2em 0}.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.5}
+th{background:#f1eee6}
+figure{margin:1.6em 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}
+.diagram{width:100%;height:auto;display:block}
+figcaption{font-size:14px;color:var(--muted);text-align:center;margin-top:6px}
+code{background:#f1eee6;padding:2px 6px;border-radius:5px;font-size:15px;word-break:break-word}
+.box,.note{background:#fff;border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:8px;padding:6px 20px;margin:2em 0}
+.box h2{font-size:20px;margin:.7em 0 .3em}
+.note{border-left-color:var(--accent);font-size:15px;padding:12px 20px}
+.box.wide{max-width:none}
+.related{max-width:1040px;margin:3em auto 0}
+.hd{padding-bottom:10px}
+.foot{background:#14213a;color:#cfd7e4;padding:30px 0;margin-top:30px}
+.foot a{color:#fff;text-decoration:none;margin-right:18px;font-size:15px;display:inline-block;padding:3px 0}
+.foot a:hover{text-decoration:underline}
+.small{font-size:13.5px;color:#a9b4c6;margin:.8em 0 0;line-height:1.55}
+@media(max-width:600px){body{font-size:16px}.post p,.post li{font-size:17px}h2{font-size:22px}}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5748993499550288" crossorigin="anonymous"></script>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap bar">
+<a class="logo" href="index.html"><span class="mark">M</span> Money Moves India</a>
+<nav aria-label="Main"><a href="index.html">Home</a><a href="trading-basics.html">Trading Basics</a><a href="side-income.html">Side Income</a><a href="money-mistakes.html">Money Mistakes</a><a href="tools-reviews.html">Tools &amp; Guides</a><a href="about.html">About</a></nav>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="trading-basics.html">Trading Basics</a></nav>
+<article class="post">
+<span class="tag">Trading Basics</span>
+<h1>Leverage in Trading: What a 1% Move Does to a Rs 20,000 Account</h1>
+<p class="meta">By the Money Moves India editorial team &middot; Published 1 October 2026 &middot; 4 min read</p>
+
+<p>Many beginners read "leverage up to 1:100" as a bonus. It is closer to a magnifying glass. It makes your profits bigger and your losses bigger by the same factor, and the loss side is the one that ends accounts.</p>
+<p>Before the example, let us get the four words straight, because they are often mixed up.</p>
+<h2>The four terms in plain English</h2>
+<div class='tw'><table><thead><tr><th>Term</th><th>What it means</th><th>Example</th></tr></thead><tbody><tr><td>Pip</td><td>The usual smallest price step in a currency pair. For most pairs it is the fourth decimal place.</td><td>EUR/USD moving from 1.1000 to 1.1001 is one pip.</td></tr><tr><td>Lot</td><td>The size of a position. A standard lot is 100,000 units of the base currency. A mini lot is 10,000 and a micro lot is 1,000.</td><td>Buying 1 micro lot of EUR/USD means 1,000 euros of exposure.</td></tr><tr><td>Leverage</td><td>How many times bigger your position is than the money you put up.</td><td>At 1:20, Rs 1 of your money controls Rs 20 of market exposure.</td></tr><tr><td>Margin</td><td>The part of your own money that is locked to hold the position.</td><td>Rs 5,000 margin at 1:20 holds a Rs 1,00,000 position.</td></tr></tbody></table></div>
+<p>One thing trips people up: margin is <em>not</em> the most you can lose. It is only the deposit your broker asks for. The loss is worked out on the full position.</p>
+<h2>What a pip is worth</h2>
+<p>For EUR/USD, one pip on a standard lot is about 10 US dollars. On a micro lot it is about 10 cents. So a 30-pip move on one micro lot is roughly 3 dollars. Pairs that are not quoted in dollars need a currency conversion, so use your provider's calculator instead of guessing.</p>
+<h2>A worked example: same market, four different positions</h2>
+<p>Take an account with Rs 20,000. A trader opens a position, and the price moves 1% against it. The only thing that changes below is leverage. These figures are illustrative and use simple maths. They ignore fees and spreads.</p>
+<div class='tw'><table><thead><tr><th>Leverage used</th><th>Position size</th><th>Loss from a 1% adverse move</th><th>Share of the account lost</th></tr></thead><tbody><tr><td>5x</td><td>Rs 1,00,000</td><td>Rs 1,000</td><td>5%</td></tr><tr><td>20x</td><td>Rs 4,00,000</td><td>Rs 4,000</td><td>20%</td></tr><tr><td>50x</td><td>Rs 10,00,000</td><td>Rs 10,000</td><td>50%</td></tr><tr><td>100x</td><td>Rs 20,00,000</td><td>Rs 20,000</td><td>100%</td></tr></tbody></table></div><figure><svg viewBox="0 0 680 300" role="img" aria-label="Share of a Rs 20,000 account lost to a 1% adverse move" class="diagram"><line x1="50" y1="250" x2="660" y2="250" stroke="#c9c4b8"/><rect x="112.0" y="241.3" width="42.0" height="8.7" rx="4" fill="#d97706"/><text x="133.0" y="235.3" font-size="12" text-anchor="middle" fill="#1b2a41">5%</text><text x="135.0" y="272" font-size="13" text-anchor="middle" fill="#5b6b7f">5x</text><rect x="262.0" y="215.2" width="42.0" height="34.8" rx="4" fill="#d97706"/><text x="283.0" y="209.2" font-size="12" text-anchor="middle" fill="#1b2a41">20%</text><text x="285.0" y="272" font-size="13" text-anchor="middle" fill="#5b6b7f">20x</text><rect x="412.0" y="163.0" width="42.0" height="87.0" rx="4" fill="#d97706"/><text x="433.0" y="157.0" font-size="12" text-anchor="middle" fill="#1b2a41">50%</text><text x="435.0" y="272" font-size="13" text-anchor="middle" fill="#5b6b7f">50x</text><rect x="562.0" y="76.1" width="42.0" height="173.9" rx="4" fill="#d97706"/><text x="583.0" y="70.1" font-size="12" text-anchor="middle" fill="#1b2a41">100%</text><text x="585.0" y="272" font-size="13" text-anchor="middle" fill="#5b6b7f">100x</text><rect x="60" y="10" width="14" height="14" rx="3" fill="#d97706"/><text x="80" y="22" font-size="13" fill="#1b2a41">Account lost (%)</text></svg><figcaption>Share of a Rs 20,000 account lost to a 1% adverse move</figcaption></figure>
+<p>At 5x, a bad move is annoying. At 100x, the same 1% move erases the whole account. The market did nothing different. Only the position size changed.</p>
+<p>In real trading the broker usually closes your position automatically once your balance gets too low (often called a stop-out). So you may not lose a full 100%, but that is only because the money has run out, not because you were protected.</p>
+<h2>Work out the risk first, then the size</h2>
+<p>A calmer way to trade is to decide how much you are willing to lose <em>before</em> you pick a position size.</p>
+<ol>
+<li>Pick a risk limit per trade. Many beginners practise with 1% of the account. On Rs 20,000 that is Rs 200.</li>
+<li>Decide where the trade is proven wrong (your stop-loss level) and how far that is from your entry. Say it is 1%.</li>
+<li>Position size = money at risk &divide; distance to stop = Rs 200 &divide; 0.01 = Rs 20,000.</li>
+</ol>
+<p>A Rs 20,000 position on a Rs 20,000 account is 1x leverage. In this case you did not need borrowed exposure at all. If your stop is closer, the maths allows a bigger position, but the loss if you are wrong is still Rs 200. That is the real purpose of position sizing.</p>
+<h2>A note for readers in India</h2>
+<p>Whether a particular leveraged forex product is open to you as a resident of India depends on current rules and on the platform. Read our checklist, <a href="is-trading-legal-in-india.html">Is Trading Legal in India?</a>, before you open an account anywhere.</p>
+
+<h2>Three leverage mistakes beginners make</h2>
+<ol>
+<li><strong>Treating margin as the maximum loss.</strong> If you put Rs 5,000 as margin on a Rs 1,00,000 position, a 5% fall costs Rs 5,000, which is your whole margin. A 10% fall costs Rs 10,000, which is more than you deposited as margin. The loss follows the position, not the deposit.</li>
+<li><strong>Using the highest leverage on offer.</strong> A broker allowing 1:100 does not mean 1:100 is sensible for you. The setting is a limit, not a target.</li>
+<li><strong>Adding to a losing position.</strong> Buying more because the price is "cheaper now" increases the size when your idea is currently being proven wrong. That is revenge trading in a polite disguise. We cover it in our guide to <a href="revenge-trading.html">revenge trading</a>.</li>
+</ol>
+<h2>Try it yourself</h2>
+<p>Practise with your own numbers before you touch any platform. Say you have Rs 30,000, you risk 1% per trade, and your stop-loss would sit 2% away from your entry price.</p>
+<div class='tw'><table><thead><tr><th>Step</th><th>Calculation</th><th>Result</th></tr></thead><tbody><tr><td>Money you accept losing</td><td>Rs 30,000 &times; 1%</td><td>Rs 300</td></tr><tr><td>Distance to your stop</td><td>2% of the price</td><td>0.02</td></tr><tr><td>Position size</td><td>Rs 300 &divide; 0.02</td><td>Rs 15,000</td></tr><tr><td>Leverage needed</td><td>Rs 15,000 &divide; Rs 30,000</td><td>0.5x (none)</td></tr></tbody></table></div>
+<p>The answer is that you do not need leverage at all. If the maths of your plan says you need 20x to make a trade worthwhile, the plan may be asking for more risk than your account can carry. Change the plan, not the leverage.</p>
+
+<aside class="box"><h2>Where to verify this</h2><p>Rules, fees and menus change. Check the latest version at:</p><ul><li>Your broker&#x27;s contract specification page for the exact pip value, lot size and margin rules of each product.</li><li>The Reserve Bank of India website (rbi.org.in) for current rules on forex trading by residents of India.</li></ul></aside>
+<aside class="note"><strong>Educational information only.</strong> This article explains how things work in general. It is not personal financial, investment, tax or legal advice. Read our <a href="disclaimer.html">full disclaimer</a> and <a href="editorial-policy.html">editorial policy</a>.</aside>
+</article>
+<section class="related"><h2>Keep reading</h2><div class="grid"><a class="card" href="is-trading-legal-in-india.html"><span class="tag">Trading Basics</span><h3>Is Trading Legal in India? A Checklist to Run Before You Deposit Money</h3><p>&#x27;Trading&#x27; covers many different activities. Use this six-step checklist to check a product and a platform before you send any money.</p><span class="more">Read the guide &rarr;</span></a><a class="card" href="dropshipping-profit-calculator.html"><span class="tag">Side Income</span><h3>Dropshipping Profit Maths: Where the Money in a Rs 699 Order Actually Goes</h3><p>A line-by-line breakdown of one dropshipping order, with the break-even advertising cost you need to know before spending on ads.</p><span class="more">Read the guide &rarr;</span></a><a class="card" href="own-store-or-marketplace.html"><span class="tag">Side Income</span><h3>Own Store or Marketplace? A Decision Guide for Small Sellers in India</h3><p>Shopify-style own stores and marketplaces like Meesho or Flipkart solve different problems. Compare margins, traffic and control with a worked example.</p><span class="more">Read the guide &rarr;</span></a></div></section>
+</main>
+<footer class="foot"><div class="wrap">
+<div class="fl"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="editorial-policy.html">Editorial Policy</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="disclaimer.html">Disclaimer</a><a href="articles.html">All Articles</a></div>
+<p class="small">Money Moves India is an independent educational website. Nothing here is personal financial, investment, tax or legal advice. Trading and investing involve risk, and no income is guaranteed.</p>
+<p class="small">&copy; 2026 Money Moves India. All rights reserved.</p>
+</div></footer>
+</body>
+</html>

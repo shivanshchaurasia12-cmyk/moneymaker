@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Read a Candlestick Chart: A Beginner Guide for TradingView | Money Moves India</title>
+<meta name="description" content="What every part of a candle means, how timeframes change the picture, and three practice exercises you can do on any free charting site.">
+<link rel="canonical" href="https://moneymaker-cmpq.onrender.com/read-candlestick-charts.html">
+<style>
+:root{--ink:#1b2a41;--muted:#5b6b7f;--bg:#fbfaf7;--card:#fff;--line:#e6e2d9;--brand:#0f5f55;--accent:#d97706}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;background:#fff;padding:8px;z-index:9}
+.top{background:#fff;border-bottom:1px solid var(--line)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;padding-bottom:14px}
+.logo{font:700 20px Georgia,serif;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.mark{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--brand);color:#fff;font-size:18px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+nav a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--accent)}
+main{padding-top:30px;padding-bottom:50px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.25;color:var(--ink)}
+h1{font-size:clamp(28px,5vw,42px);margin:.3em 0 .4em}
+h2{font-size:25px;margin:1.6em 0 .5em}h3{font-size:19px;margin:.4em 0}
+.sec{margin-top:2em}
+.lead{font-size:19px;color:var(--muted);max-width:720px}
+.hero{padding:34px 0 10px}
+.btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:600;padding:11px 20px;border-radius:9px;margin:4px 8px 4px 0}
+.btn.alt{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;text-decoration:none;color:var(--ink);transition:box-shadow .15s}
+.card:hover{box-shadow:0 6px 18px rgba(27,42,65,.09)}
+.card p{color:var(--muted);font-size:15px;margin:.4em 0 .8em;line-height:1.55}
+.more{color:var(--brand);font-weight:600;font-size:14px}
+.tag{display:inline-block;background:#e8f1ef;color:var(--brand);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:99px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.tile{display:block;background:#fff;border-left:5px solid var(--accent);border-radius:8px;padding:16px 18px;text-decoration:none;color:var(--ink);border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tile p{margin:.2em 0 0;font-size:15px;color:var(--muted);line-height:1.5}
+.post{max-width:740px;margin:0 auto}
+.post p,.post li{font-size:18px}.post li{margin:.3em 0}
+.meta{color:var(--muted);font-size:14px;margin-top:-.2em}
+.crumb{font-size:14px;color:var(--muted);max-width:740px;margin:0 auto 14px}.crumb a{color:var(--brand)}
+a{color:var(--brand)}
+.tw{overflow-x:auto;margin:1.2em 0}
+table{border-collapse:collapse;width:100%;font-size:15.5px;background:#fff;margin:1.2em 0}.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.5}
+th{background:#f1eee6}
+figure{margin:1.6em 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}
+.diagram{width:100%;height:auto;display:block}
+figcaption{font-size:14px;color:var(--muted);text-align:center;margin-top:6px}
+code{background:#f1eee6;padding:2px 6px;border-radius:5px;font-size:15px;word-break:break-word}
+.box,.note{background:#fff;border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:8px;padding:6px 20px;margin:2em 0}
+.box h2{font-size:20px;margin:.7em 0 .3em}
+.note{border-left-color:var(--accent);font-size:15px;padding:12px 20px}
+.box.wide{max-width:none}
+.related{max-width:1040px;margin:3em auto 0}
+.hd{padding-bottom:10px}
+.foot{background:#14213a;color:#cfd7e4;padding:30px 0;margin-top:30px}
+.foot a{color:#fff;text-decoration:none;margin-right:18px;font-size:15px;display:inline-block;padding:3px 0}
+.foot a:hover{text-decoration:underline}
+.small{font-size:13.5px;color:#a9b4c6;margin:.8em 0 0;line-height:1.55}
+@media(max-width:600px){body{font-size:16px}.post p,.post li{font-size:17px}h2{font-size:22px}}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5748993499550288" crossorigin="anonymous"></script>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap bar">
+<a class="logo" href="index.html"><span class="mark">M</span> Money Moves India</a>
+<nav aria-label="Main"><a href="index.html">Home</a><a href="trading-basics.html">Trading Basics</a><a href="side-income.html">Side Income</a><a href="money-mistakes.html">Money Mistakes</a><a href="tools-reviews.html">Tools &amp; Guides</a><a href="about.html">About</a></nav>
+</div></header>
+<main id="main" class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="tools-reviews.html">Tools & Guides</a></nav>
+<article class="post">
+<span class="tag">Tools & Guides</span>
+<h1>How to Read a Candlestick Chart: A Beginner Guide for TradingView</h1>
+<p class="meta">By the Money Moves India editorial team &middot; Published 1 October 2026 &middot; 4 min read</p>
+
+<p>A price chart can look like noise on day one. It stops looking like noise once you can read a single candle. This guide covers just that, with a practice routine at the end. It applies to TradingView and to most other charting platforms.</p>
+<h2>One candle, four prices</h2>
+<p>Every candle summarises one period of time. If your chart is set to "1 day", each candle is one day. If it is set to "15 minutes", each candle is fifteen minutes. It records four prices from that period: the <strong>open</strong>, the <strong>high</strong>, the <strong>low</strong> and the <strong>close</strong>.</p>
+<figure><svg viewBox="0 0 680 300" role="img" aria-label="Two candlesticks, one rising and one falling, with open, high, low and close marked" class="diagram">
+<text x="130" y="24" font-size="14" font-weight="700" fill="#0f5f55" text-anchor="middle">Rising candle (close above open)</text>
+<line x1="130" y1="50" x2="130" y2="270" stroke="#0f5f55" stroke-width="3"/>
+<rect x="100" y="90" width="60" height="110" fill="#0f5f55"/>
+<text x="175" y="54" font-size="13" fill="#1b2a41">High 108</text>
+<text x="175" y="98" font-size="13" fill="#1b2a41">Close 106</text>
+<text x="175" y="204" font-size="13" fill="#1b2a41">Open 100</text>
+<text x="175" y="274" font-size="13" fill="#1b2a41">Low 97</text>
+<text x="510" y="24" font-size="14" font-weight="700" fill="#b42318" text-anchor="middle">Falling candle (close below open)</text>
+<line x1="510" y1="50" x2="510" y2="270" stroke="#b42318" stroke-width="3"/>
+<rect x="480" y="90" width="60" height="110" fill="#b42318"/>
+<text x="555" y="54" font-size="13" fill="#1b2a41">High 108</text>
+<text x="555" y="98" font-size="13" fill="#1b2a41">Open 106</text>
+<text x="555" y="204" font-size="13" fill="#1b2a41">Close 100</text>
+<text x="555" y="274" font-size="13" fill="#1b2a41">Low 97</text>
+</svg><figcaption>The same price range can make a rising or a falling candle. Only the order of open and close changes.</figcaption></figure>
+<p>The thick part is the <strong>body</strong>. It runs from the open to the close. The thin lines above and below are the <strong>wicks</strong> (also called shadows). They show how far the price travelled beyond the body before coming back.</p>
+<h2>Reading the colours</h2>
+<p>On most platforms, including TradingView by default, green means the price closed higher than it opened and red means it closed lower. Colours can be changed in the settings, so check which colour your chart uses before reading anything into it.</p>
+<h2>What the shapes can tell you</h2>
+<div class='tw'><table><thead><tr><th>Shape</th><th>What happened in that period</th><th>Careful reading</th></tr></thead><tbody><tr><td>Long body, tiny wicks</td><td>Price moved firmly one way from open to close.</td><td>Strong move, but it says nothing about the next candle.</td></tr><tr><td>Small body, long wicks</td><td>Price went far in both directions, then returned near its open.</td><td>Indecision. Buyers and sellers both pushed and neither won.</td></tr><tr><td>Long lower wick</td><td>Sellers pushed the price down, then buyers pushed it back up.</td><td>Shows rejection of lower prices in that period only.</td></tr><tr><td>Long upper wick</td><td>Buyers pushed the price up, then sellers pushed it back down.</td><td>Shows rejection of higher prices in that period only.</td></tr></tbody></table></div>
+<p>None of these shapes predicts the future. They describe what already happened, and that is why they are useful for learning and not a promise of what comes next.</p>
+<h2>Timeframes change the story</h2>
+<p>The same stock can look like a steady climb on a weekly chart and a messy zigzag on a 5-minute chart. Both are true. Beginners often get stuck switching timeframes until they find one that matches what they hoped to see. Pick one timeframe, such as daily, and learn it properly first. You will find the timeframe selector in the toolbar at the top of the chart.</p>
+<h2>Indicators come later</h2>
+<p>Tools like moving averages, RSI and MACD are calculations built from price. They do not add new information. Adding five of them to a chart you cannot yet read just creates colourful clutter. Learn candles first. Then add one indicator at a time, and write down what it is supposed to tell you.</p>
+<h2>Three practice exercises</h2>
+<ol>
+<li><strong>Label ten candles.</strong> Pick any stock or index on a daily chart. For ten candles in a row, write down the open, high, low and close and say whether it was green or red.</li>
+<li><strong>Find the wicks.</strong> Scroll back three months. Mark five candles with a long upper or lower wick. What did the next three candles do? Notice that the answer varies.</li>
+<li><strong>Switch timeframes.</strong> Look at the same week on a daily chart and on a 1-hour chart. Write one sentence about what each chart makes easier to see.</li>
+</ol>
+<p>Do these on past data. Once you are comfortable, practise with a paper-trading account before you put real money anywhere near a chart. Our article on <a href="revenge-trading.html">revenge trading</a> explains why that order matters.</p>
+
+<h2>Mistakes beginners make with candles</h2>
+<ul>
+<li><strong>Reading one candle as a forecast.</strong> A long green candle does not mean tomorrow will be green. Candles describe a finished period.</li>
+<li><strong>Memorising dozens of named patterns.</strong> Learn what each part of a candle means first. Names are labels for shapes you will recognise on your own.</li>
+<li><strong>Ignoring volume and context.</strong> The same shape means different things after a long fall than after a long rise. Always look at what came before.</li>
+<li><strong>Zooming in until everything looks dramatic.</strong> A small chart range makes tiny moves look huge. Check the price scale on the right side.</li>
+<li><strong>Trading from the chart before practising.</strong> Reading is a skill. Give it weeks, not days.</li>
+</ul>
+<h2>A short glossary</h2>
+<div class='tw'><table><thead><tr><th>Word</th><th>Meaning</th></tr></thead><tbody><tr><td>Body</td><td>The thick part of the candle between open and close</td></tr><tr><td>Wick or shadow</td><td>The thin line above or below the body</td></tr><tr><td>Timeframe</td><td>How much time one candle represents</td></tr><tr><td>Bullish</td><td>Describes price moving up, or a view that it will</td></tr><tr><td>Bearish</td><td>Describes price moving down, or a view that it will</td></tr><tr><td>Volume</td><td>How much of the instrument was traded in the period</td></tr></tbody></table></div>
+<h2>Check your understanding</h2>
+<p>Look at this description: open 250, high 262, low 248, close 259. Which colour is the candle, how long is the upper wick, and how long is the lower wick? The close is above the open, so the candle is green (on default settings). The upper wick runs from 259 up to 262, which is 3 points. The lower wick runs from 250 down to 248, which is 2 points. If you got all three, you can already read the most important parts of a chart.</p>
+
+<aside class="box"><h2>Where to verify this</h2><p>Rules, fees and menus change. Check the latest version at:</p><ul><li>The help pages of the charting platform you use, since menus and features change.</li></ul></aside>
+<aside class="note"><strong>Educational information only.</strong> This article explains how things work in general. It is not personal financial, investment, tax or legal advice. Read our <a href="disclaimer.html">full disclaimer</a> and <a href="editorial-policy.html">editorial policy</a>.</aside>
+</article>
+<section class="related"><h2>Keep reading</h2><div class="grid"><a class="card" href="student-expense-tracker-google-sheets.html"><span class="tag">Tools & Guides</span><h3>Build a Student Expense Tracker in Google Sheets in 20 Minutes</h3><p>A free, step-by-step expense tracker with a dropdown for categories and a summary sheet that adds everything up for you.</p><span class="more">Read the guide &rarr;</span></a><a class="card" href="leverage-pips-lots-explained.html"><span class="tag">Trading Basics</span><h3>Leverage in Trading: What a 1% Move Does to a Rs 20,000 Account</h3><p>Pips, lots, margin and leverage explained with one worked example that shows how position size changes the risk.</p><span class="more">Read the guide &rarr;</span></a><a class="card" href="is-trading-legal-in-india.html"><span class="tag">Trading Basics</span><h3>Is Trading Legal in India? A Checklist to Run Before You Deposit Money</h3><p>&#x27;Trading&#x27; covers many different activities. Use this six-step checklist to check a product and a platform before you send any money.</p><span class="more">Read the guide &rarr;</span></a></div></section>
+</main>
+<footer class="foot"><div class="wrap">
+<div class="fl"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="editorial-policy.html">Editorial Policy</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="disclaimer.html">Disclaimer</a><a href="articles.html">All Articles</a></div>
+<p class="small">Money Moves India is an independent educational website. Nothing here is personal financial, investment, tax or legal advice. Trading and investing involve risk, and no income is guaranteed.</p>
+<p class="small">&copy; 2026 Money Moves India. All rights reserved.</p>
+</div></footer>
+</body>
+</html>
